@@ -1,0 +1,27 @@
+{
+    "name": "esli-api",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/server.js --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.5.0",
+        "express": "^5.1.0",
+        "mongoose": "^8.13.2"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.24.0",
+        "eslint": "^9.24.0",
+        "eslint-config-prettier": "^10.1.2",
+        "eslint-plugin-prettier": "^5.2.6",
+        "globals": "^16.0.0",
+        "prettier": "3.5.3",
+        "prettier-eslint": "^16.3.0"
+    },
+    "description": ""
+}

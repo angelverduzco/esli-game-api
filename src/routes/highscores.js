@@ -5,7 +5,7 @@ router.get("/", (req, res) => {
     highscoresController.getHighscores(req, res);
 });
 
-router.post("/", (req, res) => {
+router.put("/:rank", (req, res) => {
     highscoresController.createHighscore(req, res);
 });
 

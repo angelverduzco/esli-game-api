@@ -2,16 +2,8 @@ const Highscore = require("../models/highscore.model");
 
 const getHighscores = async (req, res) => {
     try {
-        const highscores = await Highscore.find()
-            .sort({
-                points: -1,
-                gameTime: 1,
-                destroyedBosses: -1,
-                destroyedEnemies: -1,
-                shots: 1,
-            })
-            .limit(10);
-        res.json(highscores);
+        const highscores = await Highscore.find().sort({ rank: 1 }).limit(10);
+        res.status(200).json(highscores);
     } catch {
         res.status(400).json({ error: "Error al obtener highscores" });
     }

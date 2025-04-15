@@ -1,0 +1,2 @@
+# Devolver todos los highscores
+GET http://localhost:3000/api/highscores

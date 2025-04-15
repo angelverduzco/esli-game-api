@@ -23,7 +23,7 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/usuario/esli-api.git
+   git https://github.com/angelverduzco/esli-game-api.git
    ```
 
 2. Navega al directorio del proyecto:

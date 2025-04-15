@@ -1,11 +1,11 @@
 # ESLI GAME API
 
-ESLI GAME API es una aplicación diseñada para gestionar y consultar puntuaciones altas del videojuego Esli: Última Misión. Proporciona una API RESTful que permite a los usuarios consultar los mejores puntajes y registrar nuevos puntajes altos.
+ESLI GAME API es una aplicación diseñada para gestionar y consultar  las mejores puntuaciones del videojuego [Esli: Última Misión](https://github.com/hanzeelvilla/esli-ultima-mision). Proporciona una API RESTful que permite a los usuarios consultar  y actualizar los mejores puntajes.
 
 ## Características
 
 - **Consultar los 10 mejores puntajes:** Obtén una lista de los jugadores con las puntuaciones más altas.
-- **Registrar nuevos puntajes:** Permite agregar nuevos puntajes altos al sistema.
+- **Actualizar nuevos puntajes:** Permite actualizar los nuevos puntajes altos al sistema.
 - **Validación de datos:** Asegura la integridad de los datos enviados al servidor.
 - **Persistencia de datos:** Utiliza MongoDB para almacenar los puntajes de manera segura.
 
@@ -46,6 +46,10 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
    ```bash
    npm start
    ```
+6. Inserta los Highscores default:
+   ```bash
+   npm run insert-highscores
+   ```
 
 ## Uso
 
@@ -77,22 +81,24 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
 ## Estructura del proyecto
 
 ```
-.esli-api/
-├── .env                # Variables de entorno
-├── .gitignore          # Archivos ignorados por Git
-├── package.json        # Dependencias y scripts del proyecto
+esli-game-api/
+├── .env
+├── .gitignore
+├── package.json
 ├── src/
-│   ├── app.js          # Configuración principal de la aplicación
-│   ├── server.js       # Punto de entrada del servidor
+│   ├── app.js
+│   ├── server.js
 │   ├── config/
-│   │   └── db.js       # Configuración de la base de datos
+│   │   └── db.js
 │   ├── controllers/
-│   │   └── highscores.controller.js # Lógica de los endpoints
+│   │   └── highscores.controller.js
 │   ├── models/
-│   │   └── highscore.model.js       # Modelo de datos de Highscore
+│   │   └── highscore.model.js
 │   ├── routes/
-│       ├── index.js    # Rutas principales
-│       └── highscores.js # Rutas relacionadas con Highscores
+│   │   ├── index.js
+│   │   └── highscores.js
+│   └── scripts/
+│       └── top10Default.js
 ```
 
 ## Tecnologías utilizadas

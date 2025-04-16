@@ -1,2 +1,23 @@
+# Entry point para la API
+
+GET http://localhost:3000
+
+###
+
 # Devolver todos los highscores
 GET http://localhost:3000/api/highscores
+
+###
+
+# Actualizar un highscore usando rank
+PUT http://localhost:3000/api/highscores/1
+Content-Type: application/json
+
+{
+    "gamertag": "TUSA",
+    "points": 9999,
+    "shots": 9999,
+    "destroyedEnemies": 9999,
+    "destroyedBosses": 9999,
+    "gameTime": 9999
+}

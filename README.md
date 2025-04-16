@@ -1,6 +1,8 @@
 # ESLI GAME API
 
-ESLI GAME API es una aplicación diseñada para gestionar y consultar  las mejores puntuaciones del videojuego [Esli: Última Misión](https://github.com/hanzeelvilla/esli-ultima-mision). Proporciona una API RESTful que permite a los usuarios consultar  y actualizar los mejores puntajes.
+ESLI GAME API es una aplicación diseñada por **Esli Laboratios** para gestionar y consultar las mejores puntuaciones del videojuego [Esli: Última Misión](https://github.com/hanzeelvilla/esli-ultima-mision). Proporciona una API RESTful que permite a los usuarios consultar y actualizar los mejores puntajes.
+
+![Logo Esli Laboratorios](/assets/logo_equipo.jpg)
 
 ## Características
 
@@ -16,67 +18,114 @@ Antes de comenzar, asegúrate de tener instalado:
 - [Node.js](https://nodejs.org/) (versión 16.x o superior)
 - [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/)
 - [MongoDB](https://www.mongodb.com/)
+- [REST CLIENT](https://marketplace.visualstudio.com/items/?itemName=humao.rest-client)(opcional)
 
 ## Instalación
 
 Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
 
 1. Clona este repositorio:
-   ```bash
-   git https://github.com/angelverduzco/esli-game-api.git
-   ```
+
+    ```bash
+    git https://github.com/angelverduzco/esli-game-api.git
+    ```
 
 2. Navega al directorio del proyecto:
-   ```bash
-   cd esli-api
-   ```
+
+    ```bash
+    cd esli-api
+    ```
 
 3. Instala las dependencias:
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    npm install
+    ```
 
 4. Configura las variables de entorno en un archivo `.env` en la raíz del proyecto. Ejemplo:
-   ```
-   MONGO_URI=mongodb://localhost:27017/esli-api
-   PORT=3000
-   ```
+
+    ```
+    MONGO_URI=mongodb://localhost:27017/esli-api
+    PORT=3000
+    ```
 
 5. Inicia el servidor:
-   ```bash
-   npm start
-   ```
+    ```bash
+    npm start
+    ```
 6. Inserta los Highscores default:
-   ```bash
-   npm run insert-highscores
-   ```
+    ```bash
+    npm run insert-highscores
+    ```
 
 ## Uso
 
-### Endpoints principales
+Puedes probar los endpoints con el archivo `test_endpoints.test` si tienes instalada la extensión **REST CLIENT** en VS Code. Da clic en **Send request** para ejecutar cada petición.
 
-- **Base URL:** `/api`
+## Endpoints
 
-#### Consultar puntajes altos
+### Entry Point
+
+- **Método**: `GET`
+- **Endpoint**: `GET http://localhost:3000`
+- **Descripción**: Punto de entrada a la API. Puede usarse para comprobar si el servidor está corriendo correctamente o para mostrar un mensaje de bienvenida.
+
+### Consultar Highscores
+
 - **Método:** `GET`
 - **Endpoint:** `/api/highscores`
 - **Descripción:** Devuelve una lista de los 10 mejores puntajes ordenados de mayor a menor.
 
-#### Registrar un nuevo puntaje
-- **Método:** `POST`
-- **Endpoint:** `/api/highscores`
-- **Descripción:** Registra un nuevo puntaje alto.
-- **Cuerpo de la solicitud (JSON):**
-  ```json
+Respuesta exitosa:
+
+```JSON
+[
   {
-      "gamertag": "ABC",
-      "points": 1000,
-      "shots": 50,
-      "destroyedEnemies": 20,
-      "destroyedBosses": 2,
-      "gameTime": 300
-  }
-  ```
+    "rank": 1,
+    "gamertag": "HANZ",
+    "points": 12000,
+    "shots": 300,
+    "destroyedEnemies": 50,
+    "destroyedBosses": 2,
+    "gameTime": 360
+  },
+]
+```
+
+### Actualizar un Highscore por Rank
+
+- **Método:** `PUT`
+- **Endpoint:** `/api/highscores/rank`
+- **Descripción:** Actualiza los datos del highscore con el rank especificado en la URL. Todos los campos deben ser enviados en el **cuerpo de la solicitud**.
+
+Cuerpo de la solicitud (JSON):
+```json
+{
+   "gamertag": "TUSA",
+   "points": 1000,
+   "shots": 50,
+   "destroyedEnemies": 20,
+   "destroyedBosses": 2,
+   "gameTime": 300
+}
+```
+
+Respuesta exitosa:
+```JSON
+{
+  "gamertag": "TUSA",
+  "points": 9999,
+  "shots": 9999,
+  "destroyedEnemies": 9999,
+  "destroyedBosses": 9999,
+  "gameTime": 9999
+}
+```
+
+### Errores posibles
+- `404 Not Found`: No se encontró un highscore con ese rank.
+- `400 Bad Request`: Datos inválidos según las validaciones del modelo.
+- `500 Internal Server Error`: Error inesperado en el servidor.
 
 ## Estructura del proyecto
 

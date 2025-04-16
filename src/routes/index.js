@@ -4,8 +4,4 @@ const highscores = require("./highscores.js");
 
 router.use("/highscores", highscores);
 
-router.get("/", (req, res) => {
-    res.json({ message: "Welcome to the API" });
-});
-
 module.exports = router;

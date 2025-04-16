@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
 });
 
 router.put("/:rank", (req, res) => {
-    highscoresController.createHighscore(req, res);
+    highscoresController.updateHighscore(req, res);
 });
 
 module.exports = router;

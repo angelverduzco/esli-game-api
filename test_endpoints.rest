@@ -1,5 +1,4 @@
 # Entry point para la API
-
 GET http://localhost:3000
 
 ###

@@ -4,7 +4,6 @@ const Highscoroe = require("../models/highscore.model");
 const top10Highscores = [
     {
         gamertag: "ESLI",
-        rank: 1,
         points: 1000,
         shots: 100,
         destroyedEnemies: 10,
@@ -13,7 +12,6 @@ const top10Highscores = [
     },
     {
         gamertag: "WALL",
-        rank: 2,
         points: 900,
         shots: 90,
         destroyedEnemies: 9,
@@ -22,7 +20,6 @@ const top10Highscores = [
     },
     {
         gamertag: "CARL",
-        rank: 3,
         points: 800,
         shots: 80,
         destroyedEnemies: 8,
@@ -31,7 +28,6 @@ const top10Highscores = [
     },
     {
         gamertag: "ANGE",
-        rank: 4,
         points: 700,
         shots: 70,
         destroyedEnemies: 7,
@@ -40,7 +36,6 @@ const top10Highscores = [
     },
     {
         gamertag: "N4Z1",
-        rank: 5,
         points: 600,
         shots: 60,
         destroyedEnemies: 6,
@@ -49,7 +44,6 @@ const top10Highscores = [
     },
     {
         gamertag: "LAUR",
-        rank: 6,
         points: 500,
         shots: 50,
         destroyedEnemies: 5,
@@ -58,7 +52,6 @@ const top10Highscores = [
     },
     {
         gamertag: "SEXO",
-        rank: 7,
         points: 400,
         shots: 40,
         destroyedEnemies: 4,
@@ -67,7 +60,6 @@ const top10Highscores = [
     },
     {
         gamertag: "GOTY",
-        rank: 8,
         points: 300,
         shots: 30,
         destroyedEnemies: 3,
@@ -76,7 +68,6 @@ const top10Highscores = [
     },
     {
         gamertag: "CACA",
-        rank: 9,
         points: 200,
         shots: 20,
         destroyedEnemies: 2,
@@ -85,7 +76,6 @@ const top10Highscores = [
     },
     {
         gamertag: "FUCK",
-        rank: 10,
         points: 100,
         shots: 10,
         destroyedEnemies: 1,
@@ -109,9 +99,9 @@ const insertHighscores = async () => {
         // Mostrar los Highscores
         const allHighscores = await Highscoroe.find().sort({ rank: 1 });
         console.log("Top 10 Highscores:", allHighscores);
-        allHighscores.forEach((highscore) => {
+        allHighscores.forEach((highscore, index) => {
             console.log(
-                `Rank ${highscore.rank}: ${highscore.gamertag} - ${highscore.points} puntos`,
+                `Rank ${index + 1}: ${highscore.gamertag} - ${highscore.points} puntos`,
             );
         });
     } catch (error) {

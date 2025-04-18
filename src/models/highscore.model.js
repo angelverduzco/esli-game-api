@@ -3,14 +3,6 @@ const { Schema } = mongoose;
 
 const highscoreSchema = new Schema(
     {
-        rank: {
-            type: Number,
-            required: true,
-            unique: true,
-            trim: true,
-            min: 1,
-            max: 10,
-        },
         gamertag: {
             type: String,
             required: true,

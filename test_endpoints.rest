@@ -9,14 +9,14 @@ GET http://localhost:3000/api/highscores
 ###
 
 # Actualizar un highscore usando rank
-PUT http://localhost:3000/api/highscores/1
+PUT http://localhost:3000/api/highscores
 Content-Type: application/json
 
 {
-    "gamertag": "TUSA",
-    "points": 9999,
-    "shots": 9999,
-    "destroyedEnemies": 9999,
-    "destroyedBosses": 9999,
-    "gameTime": 9999
+    "gamertag": "MAYU",
+    "points": 1200,
+    "shots": 1200,
+    "destroyedEnemies": 12,
+    "destroyedBosses": 12,
+    "gameTime": 1200
 }

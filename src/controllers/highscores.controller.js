@@ -2,7 +2,9 @@ const Highscore = require("../models/highscore.model");
 
 const getHighscores = async (req, res) => {
     try {
-        const highscores = await Highscore.find().sort({ rank: 1 }).limit(10);
+        const highscores = await Highscore.find()
+            .sort({ points: -1 })
+            .limit(10);
         res.status(200).json(highscores);
     } catch {
         res.status(400).json({ error: "Error al obtener highscores" });
@@ -11,7 +13,6 @@ const getHighscores = async (req, res) => {
 
 const updateHighscore = async (req, res) => {
     try {
-        const { rank } = req.params;
         const {
             gamertag,
             points,
@@ -21,28 +22,30 @@ const updateHighscore = async (req, res) => {
             gameTime,
         } = req.body;
 
-        const newHighscore = await Highscore.findOneAndUpdate(
-            { rank },
-            {
+        const lowestHighscore = await Highscore.findOne().sort({ points: 1 });
+        if (lowestHighscore && lowestHighscore.points < points) {
+            const newHighscore = {
                 gamertag,
                 points,
                 shots,
                 destroyedEnemies,
                 destroyedBosses,
                 gameTime,
-            },
-            { new: true, runValidators: true },
-            // devolver el documento actualizado y validar los datos antes de actualizar
-        );
+            };
 
-        if (!newHighscore) {
-            return res.status(404).json({ error: "Rank no encontrado" });
+            const updatedHighscore = await Highscore.findOneAndUpdate(
+                { _id: lowestHighscore._id },
+                newHighscore,
+                { new: true },
+            );
+
+            res.status(200).json(updatedHighscore);
+        } else {
+            res.status(400).json({
+                message: "No se puede actualizar el highscore",
+                error: "El nuevo puntaje no es mayor que el más bajo en la lista",
+            });
         }
-
-        res.status(200).json({
-            message: "Highscore actualizado correctamente",
-            newHighscore: newHighscore,
-        });
     } catch (error) {
         if (error.name === "ValidationError") {
             return res.status(400).json({

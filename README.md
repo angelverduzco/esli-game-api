@@ -92,11 +92,11 @@ Respuesta exitosa:
 ]
 ```
 
-### Actualizar un Highscore por Rank
+### Actualizar un Highscore (solo si supera el más bajo)
 
 - **Método:** `PUT`
-- **Endpoint:** `/api/highscores/rank`
-- **Descripción:** Actualiza los datos del highscore con el rank especificado en la URL. Todos los campos deben ser enviados en el **cuerpo de la solicitud**.
+- **Endpoint:** `/api/highscores`
+- **Descripción:** Intenta reemplazar el highscore con menor puntaje actual si el nuevo puntaje enviado en el **cuerpo de la solicitud** es mayor.
 
 Cuerpo de la solicitud (JSON):
 ```json

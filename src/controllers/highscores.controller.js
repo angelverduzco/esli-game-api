@@ -3,7 +3,7 @@ const Highscore = require("../models/highscore.model");
 const getHighscores = async (req, res) => {
     try {
         const highscores = await Highscore.find()
-            .sort({ points: -1 })
+            .sort({ points: -1, updatedAt: -1 })
             .limit(10);
         res.status(200).json(highscores);
     } catch {

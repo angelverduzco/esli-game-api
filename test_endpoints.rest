@@ -8,15 +8,15 @@ GET http://localhost:3000/api/highscores
 
 ###
 
-# Actualizar un highscore usando rank
+# Agregar un nuevo highscore
 PUT http://localhost:3000/api/highscores
 Content-Type: application/json
 
 {
     "gamertag": "MAYU",
-    "points": 1200,
-    "shots": 1200,
-    "destroyedEnemies": 12,
-    "destroyedBosses": 12,
-    "gameTime": 1200
+    "points": 900,
+    "shots": 90,
+    "destroyedEnemies": 9,
+    "destroyedBosses": 9,
+    "gameTime": 900
 }

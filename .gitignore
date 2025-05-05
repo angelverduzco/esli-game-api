@@ -1,3 +1,4 @@
 node_modules
 .env
 .vscode
+oficial_test_endpoints.rest

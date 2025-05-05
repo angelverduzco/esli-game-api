@@ -10,6 +10,7 @@ GET http://localhost:3000/api/highscores
 
 # Agregar un nuevo highscore
 PUT http://localhost:3000/api/highscores
+x-api-key:TU_API_KEY
 Content-Type: application/json
 
 {

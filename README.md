@@ -47,6 +47,7 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
     ```
     MONGO_URI=mongodb://localhost:27017/esli-api
     PORT=3000
+    API_KEY=TU_API_KEY
     ```
 
 5. Inicia el servidor:
@@ -61,6 +62,9 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
 ## Uso
 
 Puedes probar los endpoints con el archivo `test_endpoints.test` si tienes instalada la extensión **REST CLIENT** en VS Code. Da clic en **Send request** para ejecutar cada petición.
+
+> [!WARNING]
+> Recuerda cambiar tu API_KEY en las peticiones
 
 ## Endpoints
 
@@ -123,8 +127,10 @@ Respuesta exitosa:
 ```
 
 ### Errores posibles
+- `403 Forbidden`: La API_KEY no fue enviada o es incorrecta. 
 - `404 Not Found`: No se encontró un highscore con ese rank.
 - `400 Bad Request`: Datos inválidos según las validaciones del modelo.
+- `429`: Se superó el límite de peticiones por minuto.
 - `500 Internal Server Error`: Error inesperado en el servidor.
 
 ## Estructura del proyecto

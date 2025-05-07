@@ -8,6 +8,8 @@ const rateLimit = require("./middlewares/rateLimit.js");
 dotenv.config();
 connectDB();
 
+app.set("trust proxy", 1);
+
 app.use(express.json());
 app.use(cors());
 
